@@ -3,6 +3,7 @@ import fs from "fs";
 import { ogBot } from "./classes/ogbot";
 import { getRandomProxy, loadProxies } from "./classes/proxy";
 import { logMessage, prompt } from "./utils/logger";
+let totalTransactionGlobal: number | null = null;
 
 async function main(): Promise<void> {
   console.log(
@@ -16,7 +17,16 @@ async function main(): Promise<void> {
   `)
   );
 
-  const total = parseInt(await prompt(chalk.yellow("Total transaction perday? ")));
+  if (totalTransactionGlobal === null) {
+    const totalTransactionInput = parseInt(await prompt(chalk.yellow("Total transaction perday? ")));
+    totalTransactionGlobal = totalTransactionInput;
+
+    if (isNaN(totalTransactionGlobal) || totalTransactionGlobal <= 0) {
+      console.log(chalk.red("Input not valid. Please input a number greater than 0."));
+      process.exit(1);
+    }
+  }
+
   const accounts = fs
     .readFileSync("privatekey.txt", "utf8")
     .split("\n")
@@ -38,23 +48,18 @@ async function main(): Promise<void> {
     const og = new ogBot(privkey, currentProxy, i + 1, count);
 
     try {
-      const totalTransaction = total;
       let txCount = 0;
 
-      while (txCount < totalTransaction) {
-        const randomAction = Math.floor(Math.random() * 3);
-        logMessage(i + 1, count, `Total Transaction: ${txCount + 1}/${totalTransaction}`, "debug");
-        switch (randomAction) {
-          case 0:
-            await og.processSwapUsdtBtc();
-            break;
-          case 1:
-            await og.processSwapUsdtEth();
-            break;
-          default:
-            break;
-        }
+      const transactionSequence = [
+        og.processSwapUsdtBtc,
+        og.processSwapUsdtEth,
+        og.processSwapUsdtBtc,
+        og.processSwapUsdtEth,
+      ];
 
+      while (txCount < totalTransactionGlobal) {
+        logMessage(i + 1, count, `Total Transaction: ${txCount + 1}/${totalTransactionGlobal}`, "debug");
+        await transactionSequence[txCount % transactionSequence.length].call(og);
         txCount++;
       }
 
@@ -65,9 +70,16 @@ async function main(): Promise<void> {
   }
 
   console.log(chalk.white("-".repeat(85)));
+  const now = new Date();
+  const targetTime = new Date(now);
+  targetTime.setHours(12, 0, 0, 0);
 
-  const sleepTime = 24 * 60 * 60 * 1000;
-  logMessage(null, null, `Sleeping for 24 hours before restarting...`, "success");
+  if (now > targetTime) {
+    targetTime.setDate(targetTime.getDate() + 1);
+  }
+
+  const sleepTime = targetTime.getTime() - now.getTime();
+  logMessage(null, null, `Sleeping until ${targetTime.toISOString()}...`, "success");
   await new Promise(resolve => setTimeout(resolve, sleepTime));
 
   main();

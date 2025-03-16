@@ -423,7 +423,7 @@ export class ogBot {
   }
 
   async processSwapUsdtBtc() {
-    const usdtDecimals = 18;
+    const usdtDecimals = 6;
     const randomAmount = parseFloat(
       (Math.random() * (2 - 0.5) + 0.5).toFixed(2)
     );
@@ -442,7 +442,7 @@ export class ogBot {
       logMessage(this.currentNum, this.total, `BlockHash URL: https://chainscan-newton.0g.ai/tx/${txHash}`, "success");
       console.log(chalk.white("-".repeat(85)));
       await setTimeout(5000);
-      const btcDesimals = 18;
+      const btcDesimals = 8;
       const randomBtcAmount = parseFloat(
         (Math.random() * (0.0005 - 0.0002) + 0.0002).toFixed(6)
       );
