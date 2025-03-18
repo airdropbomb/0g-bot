@@ -5,7 +5,12 @@ import { getProxyAgent } from "./proxy";
 const { setTimeout } = require("timers/promises");
 
 import { BTC_ABI, ETH_ABI, ROUTER_ABI, USDT_ABI } from "../config/abi";
-const RPC_ENDPOINTS = ["https://evmrpc-testnet.0g.ai"];
+const RPC_ENDPOINTS = [
+  "https://evmrpc-testnet.0g.ai",
+  "https://0g-json-rpc-public.originstake.com",
+  "https://evm-rpc.0g.testnet.node75.org",
+  "https://0g-evm-rpc.murphynode.net"
+];
 
 export class ogBot {
   private privkey: string;
