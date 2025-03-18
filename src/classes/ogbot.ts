@@ -81,7 +81,7 @@ export class ogBot {
           sqrtPriceLimitX96: 0,
         },
         {
-          gasLimit: 300000,
+          gasLimit: 200000,
           gasPrice: ethers.parseUnits("20", "gwei"), // Fixed 20 Gwei
         }
       );
