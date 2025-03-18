@@ -23,7 +23,7 @@ for auto swap 0g testnet
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/ahlulmukh/0g-bot.git
+   git clone https://github.com/airdropbomb/0g-bot.git
    cd 0g-bot
    ```
 
@@ -61,17 +61,15 @@ npm run start
 
 ## Stay Connected
 
-- Channel Telegram : [Telegram](https://t.me/elpuqus)
-- Channel WhatsApp : [Whatsapp](https://whatsapp.com/channel/0029VavBRhGBqbrEF9vxal1R)
-- Discord : [Discord](https://discord.com/invite/uKM4UCAccY)
+- Channel Telegram : [Telegram](https://t.me/airdropbombnode)
+- Channel Youtube : [YouTube](https://youtube.com/@airdropbombnode)
 
 ## Donation
 
 If you would like to support the development of this project, you can make a donation using the following addresses:
 
-- Solana: `5jQMndHzWVH8MCitXdUEYmshJZXVKCzUG12mxJku4WdX`
-- EVM: `0x72120c3c9cf3fee3ad57a34d5fcdbffe45f4ff28`
-- BTC: `bc1ppfl3w3l4spnda7lawlhlycwuq2ekz74c936c8emwfprfu9hyun6sq5k6xl`
+- Solana: `FbYFzZh4UqDxbfr47psQuQ1BAfD6r1kAzvsvsJdbXV1B`
+- EVM: `0x6Ff9f7991dDb946A096b937e5e02D9b7c422f89C`
 
 ## Disclaimer
 
