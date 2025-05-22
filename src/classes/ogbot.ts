@@ -30,16 +30,16 @@ export class ogBot {
     this.address = new ethers.Wallet(this.privkey).address;
     this.currentRpcIndex = 0;
     this.web3 = this.initializeWeb3();
-    this.routerAddress = "0xD86b764618c6E3C078845BE3c3fCe50CE9535Da7";
+    this.routerAddress = "0xb95b5953ff8ee5d5d9818cdbefe363ff2191318c";
     this.routerAbi = ROUTER_ABI;
     this.usdtAddress = ethers.getAddress(
-      "0x9A87C2412d500343c073E5Ae5394E3bE3874F76b"
+      "0x3ec8a8705be1d5ca90066b37ba62c4183b024ebf"
     );
     this.ethAddress = ethers.getAddress(
-      "0xce830D0905e0f7A9b300401729761579c5FB6bd6"
+      "0x0fe9b43625fa7edd663adcec0728dd635e4abf7c"
     );
     this.btcAddress = ethers.getAddress(
-      "0x1e0d871472973c562650e991ed8006549f8cbefc");
+      "0x36f6414ff1df609214ddaba71c84f18bcf00f67d");
     this.usdtAbi = USDT_ABI;
     this.ethAbi = ETH_ABI;
     this.btcAbi = BTC_ABI;
